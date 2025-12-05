@@ -1,2 +1,0 @@
-# obs-source
-OBS Source
