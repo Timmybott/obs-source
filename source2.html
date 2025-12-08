@@ -247,7 +247,8 @@
                         mediaElement = document.createElement('video');
                         mediaElement.autoplay = true;
                         mediaElement.loop = true;
-                        mediaElement.muted = true;
+                        mediaElement.muted = false; // <-- Audio an
+                        mediaElement.volume = 1.0;  // optional
                         mediaElement.src = source.content;
                     } else {
                         mediaElement = document.createElement('img');
@@ -272,7 +273,11 @@
                     el.style.padding = '0';
                     const iframe = document.createElement('iframe');
                     iframe.src = source.content;
-                    iframe.allow = "autoplay; fullscreen; microphone; camera";
+                    iframe.allow = "autoplay; fullscreen; microphone; camera; encrypted-media";
+                    iframe.setAttribute("allow", "autoplay; fullscreen; microphone; camera; encrypted-media");
+                    iframe.setAttribute("allowfullscreen", "");
+                    iframe.setAttribute("allowtransparency", "true");
+                    iframe.setAttribute("sandbox", "allow-same-origin allow-scripts allow-pointer-lock allow-popups allow-forms allow-presentation");
                     el.appendChild(iframe);
                 }
 
